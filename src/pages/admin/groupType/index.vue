@@ -15,12 +15,6 @@
 
     <el-table :key='tableKey' :data="list" v-loading.body="listLoading" size="small" stripe highlight-current-row
       style="width: 100%;margin-top: 20px">
-      <el-table-column align="center" label="id" width="65"> <template slot-scope="scope">
-          <span>
-            {{scope.row.id}}
-          </span>
-        </template>
-      </el-table-column>
       <el-table-column width="200px" align="center" label="编码">
         <template slot-scope="scope">
           <span>{{scope.row.code}}</span>
@@ -60,8 +54,7 @@
 
       </el-table-column>
       <el-table-column align="center" label="操作" width="150" fixed="right"><template slot-scope="scope">
-          <el-button v-if="groupTypeManager_btn_edit" size="small" type="success" @click="handleUpdate(scope.row)">
-            编辑
+          <el-button v-if="groupTypeManager_btn_edit" size="small" type="success" @click="handleUpdate(scope.row)">编辑
           </el-button>
           <el-button v-if="groupTypeManager_btn_del" size="small" type="danger" @click="handleDelete(scope.row)">删除
           </el-button>
@@ -69,7 +62,6 @@
       </el-table-column>
     </el-table>
     <template slot="footer">
-
       <!-- <div v-show="!listLoading" class="pagination-container"> -->
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
         :current-page.sync="listQuery.page" :page-sizes="[10,20,30, 50]" :page-size="listQuery.limit"
@@ -116,36 +108,45 @@ export default {
         description: undefined
       },
       rules: {
-        code: [{
-          required: true,
-          message: '请输入编码',
-          trigger: 'blur'
-        }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
-          trigger: 'blur'
-        }],
-        name: [{
-          required: true,
-          message: '请输入类型名称',
-          trigger: 'blur'
-        }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
-          trigger: 'blur'
-        }],
-        description: [{
-          required: true,
-          message: '请输入描述',
-          trigger: 'blur'
-        }, {
-          min: 3,
-          max: 20,
-          message: '长度在 3 到 20 个字符',
-          trigger: 'blur'
-        }]
+        code: [
+          {
+            required: true,
+            message: '请输入编码',
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 20,
+            message: '长度在 3 到 20 个字符',
+            trigger: 'blur'
+          }
+        ],
+        name: [
+          {
+            required: true,
+            message: '请输入类型名称',
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 20,
+            message: '长度在 3 到 20 个字符',
+            trigger: 'blur'
+          }
+        ],
+        description: [
+          {
+            required: true,
+            message: '请输入描述',
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 20,
+            message: '长度在 3 到 20 个字符',
+            trigger: 'blur'
+          }
+        ]
       },
       list: null,
       total: null,
@@ -205,10 +206,10 @@ export default {
     },
     handleUpdate (row) {
       getObj(row.id).then(response => {
-        this.form = response.data
-        this.dialogFormVisible = true
-        this.dialogStatus = 'update'
-      })
+          this.form = response
+          this.dialogFormVisible = true
+          this.dialogStatus = 'update'
+        })
     },
     handleDelete (row) {
       this.$confirm('此操作将永久删除, 是否继续?', '提示', {
@@ -273,6 +274,7 @@ export default {
     },
     resetTemp () {
       this.form = {
+        code: undefined,
         username: undefined,
         name: undefined,
         sex: '男',
