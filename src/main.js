@@ -24,6 +24,7 @@ new Vue({
   created () {
 
   },
+
   mounted () {
     // 展示系统信息
     this.$store.commit('d2admin/releases/versionShow')

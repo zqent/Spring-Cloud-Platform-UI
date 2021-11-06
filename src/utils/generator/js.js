@@ -13,8 +13,7 @@ const inheritAttrs = {
   dialog: 'inheritAttrs: false,'
 }
 
-
-export function makeUpJs(conf, type) {
+export function makeUpJs (conf, type) {
   confGlobal = conf = JSON.parse(JSON.stringify(conf))
   const dataList = []
   const ruleList = []
@@ -41,7 +40,7 @@ export function makeUpJs(conf, type) {
   return script
 }
 
-function buildAttributes(el, dataList, ruleList, optionsList, methodList, propsList, uploadVarList) {
+function buildAttributes (el, dataList, ruleList, optionsList, methodList, propsList, uploadVarList) {
   buildData(el, dataList)
   buildRules(el, ruleList)
 
@@ -76,7 +75,7 @@ function buildAttributes(el, dataList, ruleList, optionsList, methodList, propsL
   }
 }
 
-function mixinMethod(type) {
+function mixinMethod (type) {
   const list = []; const
     minxins = {
       file: confGlobal.formBtns ? {
@@ -117,7 +116,7 @@ function mixinMethod(type) {
   return list
 }
 
-function buildData(conf, dataList) {
+function buildData (conf, dataList) {
   if (conf.vModel === undefined) return
   let defaultValue
   if (typeof (conf.defaultValue) === 'string' && !conf.multiple) {
@@ -128,7 +127,7 @@ function buildData(conf, dataList) {
   dataList.push(`${conf.vModel}: ${defaultValue},`)
 }
 
-function buildRules(conf, ruleList) {
+function buildRules (conf, ruleList) {
   if (conf.vModel === undefined) return
   const rules = []
   if (trigger[conf.tag]) {
@@ -149,14 +148,14 @@ function buildRules(conf, ruleList) {
   }
 }
 
-function buildOptions(conf, optionsList) {
+function buildOptions (conf, optionsList) {
   if (conf.vModel === undefined) return
   if (conf.dataType === 'dynamic') { conf.options = [] }
   const str = `${conf.vModel}Options: ${JSON.stringify(conf.options)},`
   optionsList.push(str)
 }
 
-function buildProps(conf, propsList) {
+function buildProps (conf, propsList) {
   if (conf.dataType === 'dynamic') {
     conf.valueKey !== 'value' && (conf.props.props.value = conf.valueKey)
     conf.labelKey !== 'label' && (conf.props.props.label = conf.labelKey)
@@ -166,7 +165,7 @@ function buildProps(conf, propsList) {
   propsList.push(str)
 }
 
-function buildBeforeUpload(conf) {
+function buildBeforeUpload (conf) {
   const unitNum = units[conf.sizeUnit]; let rightSizeCode = ''; let acceptCode = ''; const
     returnList = []
   if (conf.fileSize) {
@@ -191,14 +190,14 @@ function buildBeforeUpload(conf) {
   return returnList.length ? str : ''
 }
 
-function buildSubmitUpload(conf) {
+function buildSubmitUpload (conf) {
   const str = `submitUpload() {
     this.$refs['${conf.vModel}'].submit()
   },`
   return str
 }
 
-function buildOptionMethod(methodName, model, methodList) {
+function buildOptionMethod (methodName, model, methodList) {
   const str = `${methodName}() {
     // TODO 发起请求获取数据
     this.${model}
@@ -206,7 +205,7 @@ function buildOptionMethod(methodName, model, methodList) {
   methodList.push(str)
 }
 
-function buildexport(conf, type, data, rules, selectOptions, uploadVar, props, methods) {
+function buildexport (conf, type, data, rules, selectOptions, uploadVar, props, methods) {
   const str = `${exportDefault}{
   ${inheritAttrs[type]}
   components: {},

@@ -1,6 +1,5 @@
-@@ -1,85 +0,0 @@
 <template>
-<el-form label-width="80px">
+<el-form label-width="120px">
   <el-form-item label="允许访问服务">
     <el-select v-model="clients" multiple filterable remote placeholder="请输入服务关键词" :remote-method="remoteMethod" :loading="loading">
       <el-option v-for="item in items" :key="item.id" :label="item.name" :value="item.id"> </el-option>

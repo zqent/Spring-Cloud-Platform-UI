@@ -1,5 +1,5 @@
 import util from '@/libs/util.js'
-import { AccountLogin,AccountLogout } from '@/api/sys/login'
+import { AccountLogin, AccountLogout } from '@/api/sys/login'
 
 export default {
   namespaced: true,

@@ -82,7 +82,6 @@ export default {
   name: 'userManager',
   data () {
     return {
-
       form: {
         username: undefined,
         name: undefined,

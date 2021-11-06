@@ -142,7 +142,9 @@ export default {
       if (this.form.id) {
         this.formEdit = false
         this.formStatus = 'update'
+        
       }
+      console.log('role update');
     },
     handlerAdd () {
       this.resetForm()

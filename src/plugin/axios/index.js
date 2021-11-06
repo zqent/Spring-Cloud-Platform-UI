@@ -30,8 +30,10 @@ function errorLog (err) {
 
 // 创建一个 axios 实例
 const service = axios.create({
+
   baseURL: process.env.VUE_APP_API,
   timeout: 20000 // 请求超时时间
+
 })
 
 // 请求拦截器
@@ -47,6 +49,13 @@ service.interceptors.request.use(
     loading.show(config)
     // 在请求发送之前做一些处理
     if (!(/^https:\/\/|http:\/\//.test(config.url))) {
+      console.log(config.baseURL + config.url)
+      config.headers['Access-Control-Allow-Origin'] = 'http://localhost:8080'
+      // 支持跨域请求类型
+      config.headers['Access-Control-Allow-Methods'] = 'PUT,POST,GET,DELETE,OPTIONS'
+      // 配置请求头信息，包含字符集等等
+      //  config.headers["Content-Type"] = "application/json;charset=utf-8";
+
       const token = util.cookies.get('token')
       if (token && token !== 'undefined') {
         // 让每个请求携带token-- ['Authorization']为自定义key 请根据实际情况自行修改

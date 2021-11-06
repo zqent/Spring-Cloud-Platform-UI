@@ -3,12 +3,25 @@ const resolve = dir => require('path').join(__dirname, dir)
 
 // 基础路径 注意发布之前要先修改这里
 let baseUrl = process.env.NODE_ENV === 'production' ? '/' : '/'
-
+console.log('baseURL=' + baseUrl)
 module.exports = {
+
   baseUrl: baseUrl, // 根据你的实际情况更改这里
   lintOnSave: false,
   devServer: {
-    publicPath: baseUrl // 和 baseUrl 保持一致
+    publicPath: baseUrl, // 和 baseUrl 保持一致
+    host: 'localhost',
+    port: 8080,
+    open: false,
+    https: false,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8765',
+        changeOrigin: true,
+        ws: true
+
+      }
+    }
   },
   css: {
     loaderOptions: {
