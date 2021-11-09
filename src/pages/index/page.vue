@@ -1,8 +1,8 @@
 <template>
   <d2-container class="page">
     <d2-page-cover
-      title="Cloud-Platform"
-      sub-title="基于Spring Cloud微服务的中台系统">
+      title="小微中台"
+      sub-title="服务于小微企业的中台系统">
       <template slot="footer">
         
       </template>

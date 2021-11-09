@@ -4,13 +4,13 @@
     <div class="left-board">
       <div class="logo-wrapper">
         <div class="logo">
-          <img :src="logo" alt="logo"> Form Generator
+          <img :src="logo" alt="logo"> 表单制作
         </div>
       </div>
       <el-scrollbar class="left-scrollbar">
         <div class="components-list">
           <div class="components-title">
-            <svg-icon icon-class="component" />输入型组件
+            <d2-icon icon-class="highlighter" name="highlighter" />输入型组件
           </div>
           <draggable
             class="components-draggable"
@@ -26,13 +26,13 @@
               @click="addComponent(element)"
             >
               <div class="components-body">
-                <svg-icon :icon-class="element.tagIcon" />
+                <d2-icon :icon-class="element.tagIcon" :name="element.tagIcon" />
                 {{ element.label }}
               </div>
             </div>
           </draggable>
           <div class="components-title">
-            <svg-icon icon-class="component" />选择型组件
+            <d2-icon icon-class="list-check" name="list-check" />选择型组件
           </div>
           <draggable
             class="components-draggable"
@@ -50,13 +50,13 @@
               @click="addComponent(element)"
             >
               <div class="components-body">
-                <svg-icon :icon-class="element.tagIcon" />
+                <d2-icon :icon-class="element.tagIcon" :name="element.tagIcon" />
                 {{ element.label }}
               </div>
             </div>
           </draggable>
           <div class="components-title">
-            <svg-icon icon-class="component" /> 布局型组件
+            <d2-icon icon-class="component" name="table-columns" /> 布局型组件
           </div>
           <draggable
             class="components-draggable" :list="layoutComponents"
@@ -68,7 +68,7 @@
               @click="addComponent(element)"
             >
               <div class="components-body">
-                <svg-icon :icon-class="element.tagIcon" />
+                <d2-icon :icon-class="element.tagIcon" :name="element.tagIcon" />
                 {{ element.label }}
               </div>
             </div>
@@ -556,14 +556,14 @@ $lighterBlue: #409EFF;
   cursor: move;
   border: 1px dashed $selectedColor;
   border-radius: 3px;
-  .svg-icon{
+  .d2-icon{
     color: #777;
     font-size: 15px;
   }
   &:hover {
     border: 1px dashed #787be8;
     color: #787be8;
-    .svg-icon {
+    .d2-icon {
       color: #787be8;
     }
   }

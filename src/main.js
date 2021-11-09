@@ -9,6 +9,8 @@ import store from '@/store/index'
 import '@/mock'
 // 多国语
 import i18n from './i18n'
+// svg图标
+import './icons'
 // 核心插件
 import d2Admin from '@/plugin/d2admin'
 // 路由
